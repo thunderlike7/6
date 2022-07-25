@@ -48,3 +48,32 @@ return a;
 else
 return b;
 }
+
+
+/*
+Enter the no.of nodes :4
+
+Enter the cost adjacency matrix
+0
+5
+999
+10
+999
+0
+3
+999
+999
+999
+0
+1
+999
+999
+999
+0
+
+The distance matrix is
+0       5       8       9
+999     0       3       4
+999     999     0       1
+999     999     999     0
+*/
