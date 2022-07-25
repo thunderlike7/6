@@ -68,3 +68,22 @@ cout<<c[i][j]<<"\t";
 cout<<"\n";
 }
 }
+
+
+
+/*
+Enter the no.of queens:4
+
+Solution1
+X       Q       X       X
+X       X       X       Q
+Q       X       X       X
+X       X       Q       X
+
+Solution2
+X       X       Q       X
+Q       X       X       X
+X       X       X       Q
+X       Q       X       X
+*/
+
