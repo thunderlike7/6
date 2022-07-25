@@ -1,58 +1,40 @@
-#include<iostream>
-using namespace std;
-void dij(int,int [20][20],int [20],int [20],int);
-int main()
-{
-int i,j,n,visited[20],source,cost[20][20],d[20];
-cout<<"Enter no. of vertices:";
-cin>>n;
-cout<<"Enter the cost adjacency matrix\n";
+#include<stdio.h>
+#define infinity 999
+void dij(int n, int v,int cost[20][20], int dist[]){
+int i,u,count,w,flag[20],min;
 for(i=1;i<=n;i++)
-{
-for(j=1;j<=n;j++)
-{
-cin>>cost[i][j];
+flag[i]=0, dist[i]=cost[v][i];
+count=2;
+while(count<=n){
+min=99;
+for(w=1;w<=n;w++)
+if(dist[w]<min && !flag[w]) {
+min=dist[w];
+u=w;
+}
+flag[u]=1;
+count++;
+for(w=1;w<=n;w++)
+if((dist[u]+cost[u][w]<dist[w]) && !flag[w])
+dist[w]=dist[u]+cost[u][w];
 }
 }
-cout<<"\nEnter the source node:";
-cin>>source;
-dij(source,cost,visited,d,n);
+int main(){
+int n,v,i,j,cost[20][20],dist[20];
+printf("enter the number of nodes:");
+scanf("%d",&n);
+printf("\n enter the cost matrix:\n");
 for(i=1;i<=n;i++)
-if(i!=source)
-cout<<"\nShortest path from"<<source<<"to"<<i<<"is"<<d[i];
+for(j=1;j<=n;j++){
+scanf("%d",&cost[i][j]);
+if(cost[i][j] == 0)
+cost[i][j]=infinity;
 }
-void dij(int source,int cost[20][20],int visited[20],int d[20],int n)
-{
-int i,j,min,u,w;
+printf("\n enter the source matrix:");
+scanf("%d",&v);
+dij(n,v,cost,dist);
+printf("\n shortest path : \n");
 for(i=1;i<=n;i++)
-{
-visited[i]=0;
-d[i]=cost[source][i];
-}
-visited[source]=1;
-d[source]=0;
-for(j=2;j<=n;j++)
-{
-min=999;
-for(i=1;i<=n;i++)
-{
-if(!visited[i])
-{
-if(d[i]<min)
-{
-min=d[i];
-u=i;
-}
-}
-}
-visited[u]=1;
-for(w=1;w<=n; w++)
-{
-if(cost[u][w]!=999 && visited[w]==0)
-{
-if(d[w]>cost[u][w]+d[u])
-d[w]=cost[u][w]+d[u];
-}
-}
-}
+if(i!=v)
+printf("%d->%d,cost=%d\n",v,i,dist[i]);
 }
