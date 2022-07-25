@@ -35,3 +35,23 @@ if(a[u][v]==1 && visited[v]==0)
 DFS(a,v,visited,n);
 }
 }
+
+
+/*
+Enter the number of vertices: 3
+
+Enter the adjacency matrix:
+0
+10
+20
+20
+0
+5
+1
+4
+0
+
+Enter the source node: 1
+
+Graph is not connected
+*/
